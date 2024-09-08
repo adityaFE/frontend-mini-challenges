@@ -1,10 +1,10 @@
 import './App.css'
-import Counter from './Counter'
+import Gallery from './ImageGallery'
 
 function App() {
 
   return (
-    <Counter />
+    <Gallery />
     
   )
 }
