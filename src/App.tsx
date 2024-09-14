@@ -1,10 +1,10 @@
-import './App.css'
-import Gallery from './ImageGallery'
+import Accordion from './Accordion'
+//import './App.css'
 
 function App() {
 
   return (
-    <Gallery />
+    <Accordion />
     
   )
 }
