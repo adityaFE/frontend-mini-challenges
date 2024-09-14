@@ -1,44 +1,63 @@
-import { useState } from 'react';
 import { AccordionCompWrapper, AccordionHeader, AdditonalText, IconWrapper } from './subcomponents'
 import AddRoundedIcon from '@mui/icons-material/Add';
 import RemoveRoundedIcon from '@mui/icons-material/Remove';
+import {useEffect, useState} from 'react';
 
-const AccordionComp = () => {
+interface AccordionCompProps{
+    title:string,
+    content:string,
+    id:string,
+    openAccordionId : string,
+    //isMultipleChecked:boolean
+    handlingOpenAccordionId:(id:string)=>void
+}
+const AccordionComp:React.FC<AccordionCompProps> = ({
+    title,
+    content,
+    id,
+    openAccordionId,
+    handlingOpenAccordionId
+    }:AccordionCompProps) => {
 
     const [isExpanded,setIsExpanded] = useState(false)
+    //const [closeAll,setIsCloseAll] = useState(false)
+
+     // if(isMultipleChecked){
+    // setIsCloseAll(!closeAll)
+    // }
 
     const handleOnClick= () =>{
-        setIsExpanded(!isExpanded)
+        setIsExpanded((prev) => !prev)
+        handlingOpenAccordionId(id)
     }
-  return (
+
+    useEffect(() => {
+        if (openAccordionId) {
+            setIsExpanded(openAccordionId === id);
+        }
+    }, [id, openAccordionId]);
+
+    return (
         <AccordionCompWrapper>
             <AccordionHeader>
-                Question goes here
+                {title}
                 <IconWrapper onClick={handleOnClick}>
                     {!isExpanded?<AddRoundedIcon color='disabled'/>: <RemoveRoundedIcon color='disabled'/>}
                 </IconWrapper>
             </AccordionHeader>
             <div
                 style={{
-                    maxHeight: isExpanded ? '500px' : '0px',
+                    maxHeight: (isExpanded ) ? '500px' : '0px',
                     overflow: 'hidden',
                     transition: 'max-height 0.2s ease',
-                }}
-                >
-                <AdditonalText>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                    sed do eiusmod tempor incididunt ut labore 
-                     dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud 
-                    exercitation ullamco laboris 
+                }}>
+            <AdditonalText>
+                {content}
             </AdditonalText>
-            </div>
-           
-            
+            </div> 
         </AccordionCompWrapper>
-    //</div>
-        
-  )
-}
+ 
+        )
+    }
 
 export default AccordionComp
