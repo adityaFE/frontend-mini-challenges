@@ -1,21 +1,49 @@
-import React from 'react'
+import { useState } from 'react'
 import { AccordionWrapper, TextWrapper } from './subcomponents'
 import AccordionComp from './AccordionComp'
+import { data } from './const'
 
 const Accordion = () => {
+  const [isMultipleChecked,setIsMultipleChecked] = useState(true)
+  const [openAccordionId,setOpenAccordionId]= useState<string>('')
+
+
+  const handleCheckboxChange = () => {
+  if(isMultipleChecked){
+      setOpenAccordionId('')
+    }
+    setIsMultipleChecked(!isMultipleChecked)
+  }
+
+  const handlingOpenAccordionId = (id:string ) =>{
+    setOpenAccordionId(isMultipleChecked ? '' : id)
+  }
+
   return (
     <>
-        <TextWrapper>
-            Is Multiple Accordion Allowed
-        </TextWrapper>
-        <AccordionWrapper>
-            <AccordionComp />
-            <AccordionComp />
-            <AccordionComp />
-            <AccordionComp />
-            <AccordionComp />
-        </AccordionWrapper>
-        
+      <TextWrapper>
+        <p>Is Multiple Accordion Allowed?</p>
+        <input 
+            id='accordion-checkbox'
+            type="checkbox" 
+            checked={isMultipleChecked} 
+            onChange={handleCheckboxChange} 
+        />
+      </TextWrapper>
+      <AccordionWrapper>
+        {data.map((item) =>(
+            <AccordionComp
+                key={item.id}
+                openAccordionId={openAccordionId}
+                handlingOpenAccordionId={handlingOpenAccordionId}
+                //isMultipleChecked={isMultipleChecked}
+                {...item} 
+            />
+
+          ))
+        }
+      </AccordionWrapper>
+
     </>
   )
 }
