@@ -1,10 +1,10 @@
-import Accordion from './Accordion'
+import Gusser from './Guesser'
 //import './App.css'
 
 function App() {
 
   return (
-    <Accordion />
+    <Gusser />
     
   )
 }
