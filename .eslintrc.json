@@ -1,39 +1,58 @@
 {
-    "plugins": ["simple-import-sort"],
+    "plugins": [
+        "simple-import-sort"
+    ],
     "settings": {
-    "jest": { "version": 26 }
+        "jest": {
+            "version": 26
+        }
     },
     "overrides": [
-    {
-    "files": ["**/*.js", "**/*.ts", "**/*.tsx"],
-    "rules": {
-    "sort-imports": "off",
-    /*
+        {
+            "files": [
+                "**/*.js",
+                "**/*.ts",
+                "**/*.tsx"
+            ],
+            "rules": {
+                "sort-imports": "off",
+                /*
     * Seems like there's a false positive on the rule with forwarded children https://github.com/jsx-eslint/eslint-plugin-react/issues/2584
     */
-    "react/jsx-no-useless-fragment": [2, { "allowExpressions": true }],
-    "simple-import-sort/imports": [
-    "error",
-    {
-    "groups": [
-    // Packages - 3rd party libraries
-    [
-    "^date-fns(.*)",
-    "^react.*",
-    "styled-components",
-    "@fortawesome/react-fontawesome",
-    "@tanstack/react-query",
-    "@testing-library.*",
-    "@xstate/react",
-    "path"
+                "react/jsx-no-useless-fragment": [
+                    2,
+                    {
+                        "allowExpressions": true
+                    }
+                ],
+                "simple-import-sort/imports": [
+                    "error",
+                    {
+                        "groups": [
+                            // Packages - 3rd party libraries
+                            [
+                                "^date-fns(.*)",
+                                "^react.*",
+                                "styled-components",
+                                "@fortawesome/react-fontawesome",
+                                "@tanstack/react-query",
+                                "@testing-library.*",
+                                "@xstate/react",
+                                "path"
+                            ],
+                            // Packages beginning with ./ or ../
+                            [
+                                "^../.*",
+                                "^./.*"
+                            ]
+                        ]
+                    }
+                ]
+            }
+        }
     ],
-    // Packages beginning with ./ or ../
-    ["^../.*", "^./.*"]
+    "ignorePatterns": [
+        "cypress.config.ts",
+        "cypress"
     ]
-    }
-    ]
-    }
-    }
-    ],
-    "ignorePatterns": ["cypress.config.ts", "cypress"]
-   }
+}
