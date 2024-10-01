@@ -2,11 +2,7 @@ import Gusser from './Guesser'
 //import './App.css'
 
 function App() {
-
-  return (
-    <Gusser />
-    
-  )
+  return <Gusser />
 }
 
 export default App
