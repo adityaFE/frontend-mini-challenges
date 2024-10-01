@@ -1,10 +1,10 @@
 import {useState} from 'react'
-import {GusserWrapper, Input, Label, SubmitButton, SubmitButtonWrapper} from './subcomponents'
+import {Button, ButtonWrapper, GameDetails, GuessCount, GuessValue, GusserWrapper, Input, Label, PreviousGuess} from './subcomponents'
 
 const random = Math.floor((Math.random())*100)
 const Gusser = () => {
 
-    const [formData,setFormData]= useState<number>(0)
+    const [formData,setFormData]= useState<number>(1)
 
     const [text,setText] = useState<string>('Start Guessing')
 
@@ -48,21 +48,30 @@ const Gusser = () => {
         <form onSubmit={submitHandler}>
             <Label htmlFor='random-text'>Guess a number from 1 to 100</Label>
             <br></br>
-            <Input type='number' onChange={handleChange} value={formData} defaultValue={formData}/>
+            <Input type='number' onChange={handleChange} value={formData} defaultValue={formData} max="100"/>
             <br></br>
-            <SubmitButtonWrapper>
-                <SubmitButton>submit</SubmitButton>
-            </SubmitButtonWrapper>
+            <ButtonWrapper>
+                <Button>Check</Button>
+            </ButtonWrapper>
             
         </form>
-        {previousGuess&& <span>
-            The current guess is {previousGuess}
-        </span>}
-        <span>
-            {text}
-        </span>
-        <span>The guess count is {count}</span>
-        <button onClick={handleReset}>reset</button>
+    <GameDetails>
+        {
+            previousGuess &&  
+            <PreviousGuess>
+                The current guess is {previousGuess}
+            </PreviousGuess> 
+        }        
+        <GuessValue>
+            {text==="Congratulations"?<h3 style={{color:'green'}}>{text}</h3> : <h4 style={{color:'black'}}>{text}</h4>}
+        </GuessValue>
+        <GuessCount>The guess count is {count}</GuessCount>
+        <ButtonWrapper>
+            <Button onClick={handleReset}>Reset</Button>
+        </ButtonWrapper>
+        
+    </GameDetails>
+        
     </GusserWrapper>
  )
 }
