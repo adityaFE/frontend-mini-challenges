@@ -48,3 +48,8 @@ export default tseslint.config({
   },
 })
 ```
+
+
+List of things I am working on /want to work upon.
+1. Flipcard
+2. Jira clone(drag and drop feature)
