@@ -6,6 +6,7 @@ import { Button, ButtonField, MainWrapper } from './subcomponents'
 const Flipcard = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
 
+  //This is intentional to create continous loop for next
   const nextCard = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length)
   }
