@@ -1,8 +1,7 @@
-import Gusser from './Guesser'
-//import './App.css'
+import Flipcard from './FlipCard'
 
 function App() {
-  return <Gusser />
+  return <Flipcard />
 }
 
 export default App
