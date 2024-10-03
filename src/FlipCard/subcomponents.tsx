@@ -4,11 +4,12 @@ export const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 48px 32px;
 `
 
 export const MainCard = styled.div`
-  width: 20%;
-  height: 400px;
+  width: 250px;
+  height: 300px;
   cursor: pointer;
 `
 export const Card = styled.div<{
@@ -47,6 +48,11 @@ export const BackFace = styled(CardFace)`
 
 export const ButtonField = styled.div`
   margin: 24px;
+  display: flex;
+  flex-direction: row;
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+  }
 `
 
 export const Button = styled.button<{ disabled: boolean }>`
@@ -61,6 +67,9 @@ export const Button = styled.button<{ disabled: boolean }>`
   font-size: 16px;
   margin: 0 24px;
   cursor: pointer;
+  @media screen and (max-width: 600px) {
+    margin: 8px 0;
+  }
   &:hover {
     cursor: pointer;
     color: ${({ disabled }) => !disabled && 'black'};

@@ -1,0 +1,6 @@
+1. Create a component which can be flipped to reveal answer
+2. Add Next/Previous button to iterate through the cards
+3. Validations for button and based on the validations for the button attach required CSS
+4. Mobile responsive.
+
+This exercise can be used to refresh JS and CSS knowledge. 
