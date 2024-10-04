@@ -51,6 +51,6 @@ export default tseslint.config({
 
 List of things I am working on /want to work upon.
 
-1. Flipcard
+1. ~~Flipcard~~
 2. Jira clone(drag and drop feature)
 3. Create a full stack app with only html and css and js
