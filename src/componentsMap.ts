@@ -5,5 +5,6 @@ export const componentsMap: {
   Counter: () => import('./Counter/index.tsx'),
   Flipcard: () => import('./FlipCard/index.tsx'),
   Guesser: () => import('./Guesser/index.tsx'),
-  ImageGallery: () => import('./ImageGallery/index.tsx')
+  ImageGallery: () => import('./ImageGallery/index.tsx'),
+  OtpInput: () => import('./OtpInput/index.tsx')
 }
