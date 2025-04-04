@@ -1,5 +1,6 @@
 import React, { useState, Suspense } from 'react'
 import { componentsMap } from './componentsMap'
+import './index.css'
 
 // Define the type for dynamically loaded components
 type LoadedComponentType = React.ComponentType<unknown> | null
@@ -22,21 +23,23 @@ const App: React.FC = () => {
   }
 
   return (
-    <div>
-      <h1>Select a Component</h1>
-      <select onChange={handleChange} value={selectedComponent}>
-        <option value="">-- Choose a Component --</option>
-        {Object.keys(componentsMap).map((key) => (
-          <option key={key} value={key}>
-            {key}
-          </option>
-        ))}
-      </select>
+    <div className='container'>
+      <h1 className="main-header">Select a Component</h1>
+      <div className="main-container">
+        <select onChange={handleChange} value={selectedComponent}>
+          <option value="">-- Choose a Component --</option>
+          {Object.keys(componentsMap).map((key) => (
+            <option key={key} value={key}>
+              {key}
+            </option>
+          ))}
+        </select>
 
-      <div style={{ marginTop: '20px' }}>
-        <Suspense fallback={<div>Loading component...</div>}>
-          {Component ? <Component /> : <div>Please select a component.</div>}
-        </Suspense>
+        <div style={{ marginTop: '20px' }}>
+          <Suspense fallback={<div>Loading component...</div>}>
+            {Component ? <Component /> : <div>Please select a component.</div>}
+          </Suspense>
+        </div>
       </div>
     </div>
   )
